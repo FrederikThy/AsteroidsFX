@@ -1,0 +1,46 @@
+package dk.sdu.cbse.core;
+
+import dk.sdu.cbse.common.GameData;
+import dk.sdu.cbse.common.IEntityProcessingService;
+import dk.sdu.cbse.common.IGamePluginService;
+import dk.sdu.cbse.common.IPostProcessingService;
+import dk.sdu.cbse.common.World;
+import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+class SpringConfigIntegrationTest {
+
+    // Tests if the Spring Bean objects gets created at runtime.
+    @Test
+    void springContextCreatesGameRuntimeBeans() {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class)) {
+            assertNotNull(context.getBean(ModuleLayer.class));
+            assertNotNull(context.getBean(GameData.class));
+            assertNotNull(context.getBean(World.class));
+            assertNotNull(context.getBean(Game.class));
+            assertNotNull(context.getBean("pluginServices", List.class));
+            assertNotNull(context.getBean("entityProcessingServices", List.class));
+            assertNotNull(context.getBean("postProcessingServices", List.class));
+        }
+    }
+
+    // Tests if we can inject the Spring Bean objects into Game
+    @Test
+    void springInjectsSharedServiceListsIntoGame() {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class)) {
+            Game game = context.getBean(Game.class);
+            List<IGamePluginService> pluginServices = context.getBean("pluginServices", List.class);
+            List<IEntityProcessingService> entityProcessingServices = context.getBean("entityProcessingServices", List.class);
+            List<IPostProcessingService> postProcessingServices = context.getBean("postProcessingServices", List.class);
+
+            assertNotNull(game);
+            assertNotNull(pluginServices);
+            assertNotNull(entityProcessingServices);
+            assertNotNull(postProcessingServices);
+        }
+    }
+}

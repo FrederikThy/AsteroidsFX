@@ -1,5 +1,5 @@
-import dk.sdu.cbse.BulletPlugin;
-import dk.sdu.cbse.BulletSystem;
+import dk.sdu.cbse.bullet.BulletPlugin;
+import dk.sdu.cbse.bullet.BulletSystem;
 import dk.sdu.cbse.common.IEntityProcessingService;
 import dk.sdu.cbse.common.IGamePluginService;
 import dk.sdu.cbse.common.bullet.BulletSPI;

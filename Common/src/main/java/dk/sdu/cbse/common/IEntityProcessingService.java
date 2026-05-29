@@ -3,14 +3,14 @@ package dk.sdu.cbse.common;
 /**
  *
  * Interface for processing systems
- * The systems are updated each frame using AnimationTimer in Core
+ * The systems that are called will run the logic for the behavior of entities
  *
  * Pre-conditions:
  * - gameData must not be null
  * - world must not be null
  *
  * Post-conditions:
- * - Each entity has been stored in world, and entities may have updated state.
+ * - Entities may have been updated, depending on game logic.
  */
 public interface IEntityProcessingService {
     void process(GameData gameData, World world);

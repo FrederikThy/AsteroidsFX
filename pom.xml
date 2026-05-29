@@ -9,10 +9,19 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.9</maven.compiler.source>
     <maven.compiler.target>1.9</maven.compiler.target>
+    <module.output.dir>../mods-mvn</module.output.dir>
   </properties>
   <dependencyManagement>
     <dependencies/>
   </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -24,6 +33,13 @@
         <version>3.10.1</version>
         <configuration>
           <fork>true</fork>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
         </configuration>
       </plugin>
       <plugin>
@@ -43,6 +59,7 @@
           <workingDirectory>.</workingDirectory>
           <arguments>
             <argument>--module-path=mods-mvn</argument>
+            <argument>--add-modules=CommonBullet,CommonAsteroid,CommonEnemy,spring.web</argument>
             <argument>--enable-native-access=javafx.graphics</argument>
             <argument>--module=Core/dk.sdu.cbse.core.Main</argument>
           </arguments>
@@ -105,7 +122,7 @@
                       <type>jar</type>
                     </artifactItem>
                   </artifactItems>
-                  <outputDirectory>../mods-mvn</outputDirectory>
+                  <outputDirectory>${module.output.dir}</outputDirectory>
                 </configuration>
               </execution>
             </executions>
@@ -124,6 +141,7 @@
     <module>Asteroid</module>
     <module>Collision</module>
     <module>CommonAsteroid</module>
-      <module>Hej</module>
+    <module>Score</module>
+    <module>CommonEnemy</module>
   </modules>
 </project>

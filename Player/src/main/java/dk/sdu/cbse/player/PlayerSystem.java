@@ -14,6 +14,7 @@ import java.util.ServiceLoader;
 public class PlayerSystem implements IEntityProcessingService {
     private static final float SPEED = 220f;
 
+
     @Override
     public void process(GameData gameData, World world) {
         List<Entity> bullets = new ArrayList<>();
@@ -68,6 +69,11 @@ public class PlayerSystem implements IEntityProcessingService {
         if (player.getY() < 0) {
             player.setY(gameData.getDisplayHeight());
         }
+
+        if (directionX != 0 || directionY != 0) {
+            float rotation = (float)  Math.toDegrees(Math.atan2(directionY, directionX));
+            player.setRotation(rotation);
+        }
     }
 
     private Entity shoot(GameData gameData, Entity player) {
@@ -75,7 +81,7 @@ public class PlayerSystem implements IEntityProcessingService {
             return null;
         }
 
-        for (BulletSPI bulletSPI : ServiceLoader.load(BulletSPI.class)) {
+        for (BulletSPI bulletSPI : ServiceLoader.load(PlayerSystem.class.getModule().getLayer(),BulletSPI.class)) {
             return bulletSPI.createBullet(player, gameData);
         }
 

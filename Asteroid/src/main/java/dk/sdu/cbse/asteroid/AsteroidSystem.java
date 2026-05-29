@@ -11,9 +11,40 @@ import java.util.ServiceLoader;
 public class AsteroidSystem implements IEntityProcessingService {
 
 
+    private static final float asteroidSpawnTime = 5f;
+    private float asteroidTimer = 0f;
     // Gets asteroid implementation through ServiceLoader, instead of dependency on AsteroidPlugin
-    private final AsteroidSPI asteroidSPI = ServiceLoader.load(AsteroidSPI.class).findFirst().orElseThrow();
+    private final AsteroidSPI asteroidSPI = ServiceLoader.load(AsteroidSystem.class.getModule().getLayer(), AsteroidSPI.class).findFirst().orElseThrow();
     public void process(GameData gameData, World world) {
+
+        // Spawns an asteroid if there has passed 5 seconds, and spawns the asteroid at either the left or right side of the screen
+        asteroidTimer += gameData.getDeltaTime();
+
+        if (asteroidTimer >= asteroidSpawnTime) {
+            boolean spawnFromLeft = Math.random() < 0.5;
+
+            float x;
+            float y = (float) (Math.random() * gameData.getDisplayHeight());
+
+            if (spawnFromLeft) {
+                x = 0;
+            } else {
+                x = gameData.getDisplayWidth();
+            }
+
+            Asteroid asteroid = asteroidSPI.createAsteroid(x, y, 3);
+
+            if (spawnFromLeft) {
+                asteroid.setVelocityX(Math.abs(asteroid.getVelocityX()));
+            } else {
+                asteroid.setVelocityX(-Math.abs(asteroid.getVelocityX()));
+            }
+
+            world.addEntity(asteroid);
+            asteroidTimer = 0f;
+        }
+
+
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Asteroid asteroid) {
                 entity.setX(entity.getX() + entity.getVelocityX() * gameData.getDeltaTime());

@@ -29,23 +29,27 @@ public class CollisionSystem implements IPostProcessingService {
                         entitiesToRemove.add(entity1);
                         // Sets split to true. AsteroidSystem handles splitting to ensure high cohesion
                         asteroid.setShouldSplit(true);
+                        gameData.addScore(25);
                     }
 
                     if (entity1.getType().equals("BULLET") && entity1.getOwner().equals("PLAYER") && entity2.getType().equals("ENEMY")) {
                         entitiesToRemove.add(entity1);
                         entitiesToRemove.add(entity2);
+                        gameData.addScore(50);
                     }
 
                     if(entity1.getType().equals("PLAYER") && entity2.getType().equals("ASTEROID")){
                         entitiesToRemove.add(entity1);
                         entitiesToRemove.add(entity2);
                         System.out.println("GAME OVER");
+                        gameData.setGameOver(true);
                     }
 
                     if (entity1.getType().equals("PLAYER") && entity2.getType().equals("BULLET") && entity2.getOwner().equals("ENEMY")){
                         entitiesToRemove.add(entity1);
                         entitiesToRemove.add(entity2);
                         System.out.println("GAME OVER");
+                        gameData.setGameOver(true);
                     }
                 }
             }

@@ -3,6 +3,10 @@ package dk.sdu.cbse.common;
 public class GameData {
     private int displayHeight = 600;
     private int displayWidth = 800;
+
+    private int score = 0;
+
+    private boolean gameOver = false;
     private final GameKeys keys = new GameKeys();
 
     private float deltaTime;
@@ -31,5 +35,19 @@ public class GameData {
     }
     public void setDeltaTime(float deltaTime) {
         this.deltaTime = deltaTime;
+    }
+
+    public int  getScore() {
+        return score;
+    }
+    public void addScore(int score) {
+        this.score += score;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }

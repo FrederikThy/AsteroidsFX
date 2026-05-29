@@ -15,6 +15,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <module.output.dir>../plugins</module.output.dir>
     </properties>
 
     <dependencies>
@@ -27,6 +28,12 @@
         <dependency>
             <groupId>dk.sdu.cbse</groupId>
             <artifactId>CommonBullet</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse</groupId>
+            <artifactId>CommonEnemy</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

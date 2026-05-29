@@ -1,7 +1,6 @@
 package dk.sdu.cbse.asteroid;
 
 import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IEntityProcessingService;
 import dk.sdu.cbse.common.IGamePluginService;
 import dk.sdu.cbse.common.World;
 import dk.sdu.cbse.commonAsteroid.Asteroid;
@@ -15,7 +14,7 @@ public class AsteroidPlugin implements IGamePluginService, AsteroidSPI {
     Random random = new Random();
     @Override
     public void start(GameData gameData, World world) {
-        world.addEntity(createAsteroid(500, 300, 3));
+        world.addEntity(createAsteroid(0, gameData.getDisplayHeight() / 2, 3));
     }
 
     @Override
