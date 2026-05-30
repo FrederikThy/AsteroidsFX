@@ -1,12 +1,16 @@
 package dk.sdu.cbse.enemy;
 
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IGamePluginService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IGamePluginService;
+import dk.sdu.cbse.common.data.World;
 
 import dk.sdu.cbse.common.enemy.Enemy;
 import dk.sdu.cbse.common.enemy.EnemySPI;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnemyPlugin implements IGamePluginService, EnemySPI {
     @Override
@@ -28,6 +32,17 @@ public class EnemyPlugin implements IGamePluginService, EnemySPI {
 
     @Override
     public void stop(GameData gameData, World world) {
+        // Makes a list to not remove entities during world.getEntities
+        List<Entity> enemy = new ArrayList<Entity>();
 
+        for  (Entity entity : world.getEntities()) {
+            if(entity instanceof Enemy) {
+                enemy.add(entity);
+            }
+        }
+
+        for (Entity entity : enemy){
+            world.removeEntity(entity);
+        }
     }
 }

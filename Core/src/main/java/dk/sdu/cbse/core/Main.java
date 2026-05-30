@@ -1,6 +1,5 @@
 package dk.sdu.cbse.core;
 
-import dk.sdu.cbse.common.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

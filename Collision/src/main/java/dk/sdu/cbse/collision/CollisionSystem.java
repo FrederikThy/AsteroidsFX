@@ -1,9 +1,9 @@
 package dk.sdu.cbse.collision;
 
-import dk.sdu.cbse.common.Entity;
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IPostProcessingService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IPostProcessingService;
+import dk.sdu.cbse.common.data.World;
 import dk.sdu.cbse.commonAsteroid.Asteroid;
 
 import java.util.HashSet;
@@ -11,9 +11,12 @@ import java.util.Set;
 
 public class CollisionSystem implements IPostProcessingService {
 
-    // To avoid bugs, we remove the entities after the loop
-    Set<Entity> entitiesToRemove = new HashSet<>();
+
+
     public void process(GameData gameData, World world) {
+
+        // To avoid bugs, we remove the entities after the loop
+        Set<Entity> entitiesToRemove = new HashSet<>();
 
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {

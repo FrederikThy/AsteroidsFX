@@ -1,8 +1,8 @@
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/IGamePluginService.java
 /Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/module-info.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/IPostProcessingService.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/IEntityProcessingService.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/GameData.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/GameKeys.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/Entity.java
-/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/World.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/data/GameKeys.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/services/IPostProcessingService.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/data/World.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/data/Entity.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/services/IEntityProcessingService.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/services/IGamePluginService.java
+/Users/frederikthygesen/IdeaProjects/AsteroidsFX-main/AsteroidsFX/Common/src/main/java/dk/sdu/cbse/common/data/GameData.java

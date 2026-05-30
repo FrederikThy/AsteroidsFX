@@ -1,4 +1,5 @@
-import dk.sdu.cbse.commonAsteroid.AsteroidSPI;
+import dk.sdu.cbse.common.services.IEntityProcessingService;
+import dk.sdu.cbse.common.services.IGamePluginService;
 
 module Asteroid {
     requires Common;
@@ -8,7 +9,7 @@ module Asteroid {
 
     uses dk.sdu.cbse.commonAsteroid.AsteroidSPI;
 
-    provides dk.sdu.cbse.common.IGamePluginService with dk.sdu.cbse.asteroid.AsteroidPlugin;
-    provides dk.sdu.cbse.common.IEntityProcessingService with dk.sdu.cbse.asteroid.AsteroidSystem;
+    provides IGamePluginService with dk.sdu.cbse.asteroid.AsteroidPlugin;
+    provides IEntityProcessingService with dk.sdu.cbse.asteroid.AsteroidSystem;
     provides dk.sdu.cbse.commonAsteroid.AsteroidSPI with dk.sdu.cbse.asteroid.AsteroidPlugin;
 }

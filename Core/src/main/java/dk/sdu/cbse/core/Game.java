@@ -1,6 +1,12 @@
 package dk.sdu.cbse.core;
 
-import dk.sdu.cbse.common.*;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.data.GameKeys;
+import dk.sdu.cbse.common.data.World;
+import dk.sdu.cbse.common.services.IEntityProcessingService;
+import dk.sdu.cbse.common.services.IGamePluginService;
+import dk.sdu.cbse.common.services.IPostProcessingService;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;

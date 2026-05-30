@@ -1,4 +1,6 @@
 import dk.sdu.cbse.common.bullet.BulletSPI;
+import dk.sdu.cbse.common.services.IEntityProcessingService;
+import dk.sdu.cbse.common.services.IGamePluginService;
 
 
 module Player {
@@ -9,9 +11,9 @@ module Player {
 
     uses BulletSPI;
 
-    provides dk.sdu.cbse.common.IGamePluginService with dk.sdu.cbse.player.PlayerPlugin;
+    provides IGamePluginService with dk.sdu.cbse.player.PlayerPlugin;
 
-    provides dk.sdu.cbse.common.IEntityProcessingService with dk.sdu.cbse.player.PlayerSystem;
+    provides IEntityProcessingService with dk.sdu.cbse.player.PlayerSystem;
 }
 
 

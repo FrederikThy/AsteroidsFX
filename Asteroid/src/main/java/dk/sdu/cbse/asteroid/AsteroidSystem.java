@@ -1,9 +1,9 @@
 package dk.sdu.cbse.asteroid;
 
-import dk.sdu.cbse.common.Entity;
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IEntityProcessingService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IEntityProcessingService;
+import dk.sdu.cbse.common.data.World;
 import dk.sdu.cbse.commonAsteroid.*;
 import java.util.ServiceLoader;
 

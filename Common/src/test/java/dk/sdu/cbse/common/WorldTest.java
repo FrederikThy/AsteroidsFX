@@ -1,5 +1,7 @@
 package dk.sdu.cbse.common;
 
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.World;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

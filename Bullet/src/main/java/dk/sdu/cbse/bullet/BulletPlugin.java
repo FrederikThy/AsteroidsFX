@@ -1,9 +1,9 @@
 package dk.sdu.cbse.bullet;
 
-import dk.sdu.cbse.common.Entity;
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IGamePluginService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IGamePluginService;
+import dk.sdu.cbse.common.data.World;
 import dk.sdu.cbse.common.bullet.Bullet;
 import dk.sdu.cbse.common.bullet.BulletSPI;
 
@@ -16,6 +16,8 @@ public class BulletPlugin implements IGamePluginService, BulletSPI {
 
     @Override
     public void start(GameData gameData, World world) {
+        // Unlike the other implementations of start(...), we dont need to add a bullet when the game starts.
+        // That is why this method is empty, and the bullet spawning is handled by createBullet instead.
     }
 
     @Override
@@ -39,16 +41,17 @@ public class BulletPlugin implements IGamePluginService, BulletSPI {
     }
 
     public void stop(GameData gameData, World world) {
-        List<Entity> bullets = new ArrayList<>();
+        // Makes a list to not remove entities during world.getEntities
+        List<Entity> bullet = new ArrayList<Entity>();
 
-        for (Entity entity : world.getEntities()) {
-            if(entity.getClass() == Bullet.class) {
-                bullets.add(entity);
+        for  (Entity entity : world.getEntities()) {
+            if(entity instanceof Bullet) {
+                bullet.add(entity);
             }
         }
 
-        for (Entity bullet : bullets) {
-            world.removeEntity(bullet);
+        for (Entity entity : bullet){
+            world.removeEntity(entity);
         }
     }
 }

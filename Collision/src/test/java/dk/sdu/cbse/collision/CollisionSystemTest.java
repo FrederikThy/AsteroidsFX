@@ -1,6 +1,6 @@
 package dk.sdu.cbse.collision;
 
-import dk.sdu.cbse.common.Entity;
+import dk.sdu.cbse.common.data.Entity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,9 +1,9 @@
 package dk.sdu.cbse.enemy;
 
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IEntityProcessingService;
-import dk.sdu.cbse.common.World;
-import dk.sdu.cbse.common.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IEntityProcessingService;
+import dk.sdu.cbse.common.data.World;
+import dk.sdu.cbse.common.data.Entity;
 import dk.sdu.cbse.common.bullet.BulletSPI;
 import dk.sdu.cbse.common.enemy.Enemy;
 import dk.sdu.cbse.common.enemy.EnemySPI;
@@ -65,6 +65,7 @@ public class EnemySystem implements IEntityProcessingService {
                     enemy.setRotation(180);
                 }
                 world.addEntity(enemy);
+                enemyTimer = 0f;
             }
         }
     }

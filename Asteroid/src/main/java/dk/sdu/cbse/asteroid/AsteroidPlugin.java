@@ -1,12 +1,16 @@
 package dk.sdu.cbse.asteroid;
 
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IGamePluginService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.Entity;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IGamePluginService;
+import dk.sdu.cbse.common.data.World;
 import dk.sdu.cbse.commonAsteroid.Asteroid;
 
 import dk.sdu.cbse.commonAsteroid.AsteroidSPI;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class AsteroidPlugin implements IGamePluginService, AsteroidSPI {
@@ -36,6 +40,18 @@ public class AsteroidPlugin implements IGamePluginService, AsteroidSPI {
     }
     @Override
     public void stop(GameData gameData, World world) {
+        // Makes a list to not remove entities during world.getEntities
+        List<Entity> asteroid = new ArrayList<Entity>();
+
+        for  (Entity entity : world.getEntities()) {
+            if(entity instanceof Asteroid) {
+                asteroid.add(entity);
+            }
+        }
+
+        for (Entity entity : asteroid){
+            world.removeEntity(entity);
+        }
 
     }
 

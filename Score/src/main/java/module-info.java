@@ -1,4 +1,4 @@
-import dk.sdu.cbse.common.IPostProcessingService;
+import dk.sdu.cbse.common.services.IPostProcessingService;
 
 module Score {
     requires Common;

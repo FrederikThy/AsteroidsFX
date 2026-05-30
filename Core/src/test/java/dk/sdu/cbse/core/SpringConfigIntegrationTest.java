@@ -1,10 +1,7 @@
 package dk.sdu.cbse.core;
 
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IEntityProcessingService;
-import dk.sdu.cbse.common.IGamePluginService;
-import dk.sdu.cbse.common.IPostProcessingService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.data.World;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

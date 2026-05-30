@@ -1,8 +1,8 @@
 package dk.sdu.cbse.score;
 
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IPostProcessingService;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.data.GameData;
+import dk.sdu.cbse.common.services.IPostProcessingService;
+import dk.sdu.cbse.common.data.World;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -24,6 +24,7 @@ public class ScoringSystem implements IPostProcessingService {
         try {
             // Send the score to the scoring microservice and read back the current high score.
             String highscore = restTemplate.postForObject("http://localhost:8080/score?score=" + score, null, String.class);
+            System.out.println("Highscore sent to microservice: " + highscore);
 
         } catch (Exception e){
             // Keep the game from crashing if the scoring service is not running.
