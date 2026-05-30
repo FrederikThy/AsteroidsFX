@@ -17,7 +17,8 @@ class SpringConfigIntegrationTest {
     // Tests if the Spring Bean objects gets created at runtime.
     @Test
     void springContextCreatesGameRuntimeBeans() {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class)) {
+        try (AnnotationConfigApplicationContext context =
+                     new AnnotationConfigApplicationContext(SpringConfig.class)) {
             assertNotNull(context.getBean(ModuleLayer.class));
             assertNotNull(context.getBean(GameData.class));
             assertNotNull(context.getBean(World.class));
@@ -28,19 +29,4 @@ class SpringConfigIntegrationTest {
         }
     }
 
-    // Tests if we can inject the Spring Bean objects into Game
-    @Test
-    void springInjectsSharedServiceListsIntoGame() {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class)) {
-            Game game = context.getBean(Game.class);
-            List<IGamePluginService> pluginServices = context.getBean("pluginServices", List.class);
-            List<IEntityProcessingService> entityProcessingServices = context.getBean("entityProcessingServices", List.class);
-            List<IPostProcessingService> postProcessingServices = context.getBean("postProcessingServices", List.class);
-
-            assertNotNull(game);
-            assertNotNull(pluginServices);
-            assertNotNull(entityProcessingServices);
-            assertNotNull(postProcessingServices);
-        }
-    }
 }

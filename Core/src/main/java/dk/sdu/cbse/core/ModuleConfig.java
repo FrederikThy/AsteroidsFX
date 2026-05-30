@@ -27,6 +27,7 @@ public class ModuleConfig {
 
         Configuration configuration = ModuleLayer.boot().configuration().resolve(finder, ModuleFinder.of(), moduleNames);
 
-        return ModuleLayer.boot().defineModulesWithOneLoader(configuration, ClassLoader.getSystemClassLoader());
+        return ModuleLayer.boot()
+                .defineModulesWithOneLoader(configuration, ClassLoader.getSystemClassLoader());
     }
 }
