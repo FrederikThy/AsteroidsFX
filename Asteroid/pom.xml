@@ -29,12 +29,6 @@
             <artifactId>CommonAsteroid</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>dk.sdu.cbse</groupId>
-            <artifactId>CommonAsteroid</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
 </project>

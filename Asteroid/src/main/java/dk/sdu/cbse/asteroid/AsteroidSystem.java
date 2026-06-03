@@ -5,6 +5,9 @@ import dk.sdu.cbse.common.data.GameData;
 import dk.sdu.cbse.common.services.IEntityProcessingService;
 import dk.sdu.cbse.common.data.World;
 import dk.sdu.cbse.commonAsteroid.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ServiceLoader;
 
 
@@ -19,6 +22,10 @@ public class AsteroidSystem implements IEntityProcessingService {
 
         // Spawns an asteroid if there has passed 5 seconds, and spawns the asteroid at either the left or right side of the screen
         asteroidTimer += gameData.getDeltaTime();
+
+        // Stores entities that should be added or removed, to avoid getting ConcurrentModificationException
+        List<Entity> asteroidsToRemove = new ArrayList<>();
+        List<Entity> asteroidsToAdd = new ArrayList<>();
 
         if (asteroidTimer >= asteroidSpawnTime) {
             boolean spawnFromLeft = Math.random() < 0.5;
@@ -68,26 +75,37 @@ public class AsteroidSystem implements IEntityProcessingService {
                 if (asteroid.isShouldSplit()) {
 
                     // First calls splitAsteroid, which creates two small asteroids
-                    splitAsteroid(world, asteroid);
+                    asteroidsToAdd.addAll(splitAsteroid(asteroid));
 
                     // Then removes the original asteroid
-                    world.removeEntity(entity);
+                    asteroidsToRemove.add(asteroid);
                 }
             }
+        }
+
+        for (Entity entity : asteroidsToAdd) {
+            world.addEntity(entity);
+        }
+        for (Entity entity : asteroidsToRemove) {
+            world.removeEntity(entity);
         }
     }
 
 
-    private void  splitAsteroid(World world, Asteroid asteroid) {
+    // returns a list of new asteroids
+    private List<Entity> splitAsteroid(Asteroid asteroid) {
+        List<Entity> newAsteroids = new ArrayList<>();
         if (asteroid.getSize() <= 1) {
-            return;
+            return newAsteroids;
         }
 
         // Creates two smaller asteroids
         for (int i = 0; i < 2; i++) {
             // Slightly changes the asteroid x and y, so they dont spawn directly onto each other
-            world.addEntity(asteroidSPI.createAsteroid(asteroid.getX() + (i * 20-10), asteroid.getY() + (i * 20-10), asteroid.getSize() -1));
+            newAsteroids.add(asteroidSPI.createAsteroid(asteroid.getX() + (i * 20-10), asteroid.getY() + (i * 20-10), asteroid.getSize() -1));
         }
+
+        return newAsteroids;
     }
 
 
